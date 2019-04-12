@@ -1,0 +1,16 @@
+[Unit]
+Description=Application Jah service
+After=syslog.target
+
+[Service]
+WorkingDirectory=/opt/prod/jah
+ExecStart=/bin/java -Xms128m -Xmx256m -jar jah.jar
+User=root
+Type=simple
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=jah
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
